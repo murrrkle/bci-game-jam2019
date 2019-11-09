@@ -7,6 +7,7 @@ public class Ball : MonoBehaviour
     public Vector3 InitialVelocity;
     public float SpeedCoefficient;
     public float DespawnThreshold;
+    public float SplatDistanceThreshold;
     public Splatter splatter;
 
     public Color SplatColour;
@@ -38,6 +39,11 @@ public class Ball : MonoBehaviour
             rb.AddForce(rb.velocity * SpeedCoefficient, ForceMode.Impulse);
             SpeedCoefficient *= 0.9f; // Easing function - how will the coefficient decrease over time
         }
+
+        if (collision.gameObject.tag.Contains("Colour"))
+        {
+            SplatColour = collision.gameObject.GetComponent<Wall>().Colour;
+        }
     }
 
     // Update is called once per frame
@@ -55,7 +61,7 @@ public class Ball : MonoBehaviour
     {
         Vector3 curPos = transform.position;
 
-        if (Vector3.Distance(oldPos, curPos) <= 0.2)
+        if (Vector3.Distance(oldPos, curPos) >= SplatDistanceThreshold)
         {
             Splatter splat  = (Splatter)Instantiate(splatter, transform.position, Quaternion.identity);
             splat.transform.parent = GameObject.Find("SplatTrail").transform;
