@@ -54,9 +54,6 @@ public class Ball : MonoBehaviour
     {
         Vector3 curPos = transform.position;
 
-        if (Vector3.Distance(oldPos, curPos) >= 0.2)
-        {
-            GameObject smoketrail = GameObject.Find("SmokeTrail");
-        }
+        
     }
 }
