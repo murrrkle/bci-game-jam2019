@@ -8,12 +8,18 @@ public class Ball : MonoBehaviour
     public float SpeedCoefficient;
     public float DespawnThreshold;
 
+    public Color SmokeColour;
+
     private Rigidbody rb;
     private SphereCollider sc;
+
+
+    private Vector3 oldPos;
 
     // Start is called before the first frame update
     void Start()
     {
+        oldPos = transform.position;
         SpeedCoefficient = 1;
 
         rb = this.gameObject.GetComponent<Rigidbody>();
@@ -41,6 +47,16 @@ public class Ball : MonoBehaviour
         if (rb.velocity.magnitude <= DespawnThreshold) // Stop Ball if velocity is lower than Threshold.
         {
             rb.velocity = Vector3.zero;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        Vector3 curPos = transform.position;
+
+        if (Vector3.Distance(oldPos, curPos) >= 0.2)
+        {
+            GameObject smoketrail = GameObject.Find("SmokeTrail");
         }
     }
 }

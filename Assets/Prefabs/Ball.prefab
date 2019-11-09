@@ -106,7 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2060986371f99424d8baf7260f8051d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialVelocity: {x: 8, y: 0, z: 8}
+  InitialVelocity: {x: 0, y: 0, z: 0}
+  SpeedCoefficient: 1
+  DespawnThreshold: 1.8
 --- !u!54 &4255497755702592583
 Rigidbody:
   m_ObjectHideFlags: 0
