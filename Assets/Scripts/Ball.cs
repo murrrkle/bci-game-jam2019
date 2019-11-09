@@ -25,7 +25,7 @@ public class Ball : MonoBehaviour
         SpeedCoefficient = 1;
 
         rb = this.gameObject.GetComponent<Rigidbody>();
-        rb.AddForce(InitialVelocity * 2, ForceMode.Impulse);
+        rb.AddForce(InitialVelocity * 2, ForceMode.VelocityChange);
 
         sc = this.gameObject.GetComponent<SphereCollider>();
         
@@ -33,17 +33,22 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
-        if (collision.gameObject.tag.Contains("Obstacle_Flat"))
+        string collisionTag = collision.gameObject.tag;
+        if (collisionTag.Contains("Obstacle_Flat"))
         {
-            rb.AddForce(rb.velocity * SpeedCoefficient, ForceMode.Impulse);
+            rb.AddForce(rb.velocity * SpeedCoefficient, ForceMode.VelocityChange);
             SpeedCoefficient *= 0.9f; // Easing function - how will the coefficient decrease over time
+        }
+        else if (collisionTag.Contains("Bumper")) {
+            SpeedCoefficient = 1;
+            rb.AddForce(rb.velocity.normalized * 5, ForceMode.VelocityChange);
         }
 
         if (collision.gameObject.tag.Contains("Colour"))
         {
             SplatColour = collision.gameObject.GetComponent<Wall>().Colour;
         }
+        
     }
 
     // Update is called once per frame

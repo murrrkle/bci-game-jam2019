@@ -9,6 +9,9 @@ TagManager:
   - Colors
   - Surface
   - Obstacle_Flat_Colour
+  - Obstacle_Colour
+  - Obstacle
+  - Bumper_Colour
   layers:
   - Default
   - TransparentFX
