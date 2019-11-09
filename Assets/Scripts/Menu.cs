@@ -5,12 +5,7 @@ public class Menu : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Level Select");
-    }
-
-    public void ExitGame()
-    {
-        Application.Quit();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 }
