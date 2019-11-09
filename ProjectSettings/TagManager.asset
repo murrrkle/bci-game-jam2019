@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle_Flat
+  - Saw
+  - Colors
+  - Surface
+  - Obstacle_Flat_Colour
   layers:
   - Default
   - TransparentFX

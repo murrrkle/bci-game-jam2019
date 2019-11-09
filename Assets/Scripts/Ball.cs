@@ -7,8 +7,9 @@ public class Ball : MonoBehaviour
     public Vector3 InitialVelocity;
     public float SpeedCoefficient;
     public float DespawnThreshold;
+    public Splatter splatter;
 
-    public Color SmokeColour;
+    public Color SplatColour;
 
     private Rigidbody rb;
     private SphereCollider sc;
@@ -54,6 +55,18 @@ public class Ball : MonoBehaviour
     {
         Vector3 curPos = transform.position;
 
+        if (Vector3.Distance(oldPos, curPos) <= 0.2)
+        {
+            Splatter splat  = (Splatter)Instantiate(splatter, transform.position, Quaternion.identity);
+            splat.transform.parent = GameObject.Find("SplatTrail").transform;
+
+            //spawns the splatter
+            splat.GetComponent<Splatter>().splatColor = SplatColour;//set the splatter color
+            splat.GetComponent<Splatter>().randomColor = false;//make random false as we want the splatter color to the color we assigned
+            splat.GetComponent<Splatter>().ApplyStyle();//then apply the style
+
+            oldPos = curPos;
+        }
         
     }
 }
