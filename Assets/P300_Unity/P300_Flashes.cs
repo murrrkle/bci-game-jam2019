@@ -119,6 +119,7 @@ public class P300_Flashes : MonoBehaviour
         //Set up LSL Marker Stream
         marker = FindObjectOfType<LSLMarkerStream>();
 
+        drawMeter = GameObject.FindGameObjectWithTag("Launcher").GetComponent<DrawMeter>();
         List<Shapes2D.Shape> shapes = drawMeter.CreateArcList();
         print(shapes.Count);
 

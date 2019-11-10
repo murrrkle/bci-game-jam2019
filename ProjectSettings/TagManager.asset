@@ -12,6 +12,7 @@ TagManager:
   - Obstacle_Colour
   - Obstacle
   - Bumper_Colour
+  - Launcher
   layers:
   - Default
   - TransparentFX
