@@ -119,9 +119,13 @@ public class P300_Flashes : MonoBehaviour
         //Set up LSL Marker Stream
         marker = FindObjectOfType<LSLMarkerStream>();
 
-        drawMeter = GameObject.FindGameObjectWithTag("Launcher").GetComponent<DrawMeter>();
-        List<Shapes2D.Shape> shapes = drawMeter.CreateArcList();
-        print(shapes.Count);
+        if (GameObject.FindGameObjectsWithTag("Launcher").Length > 0)
+        {
+            drawMeter = GameObject.FindGameObjectWithTag("Launcher").GetComponent<DrawMeter>();
+            List<Shapes2D.Shape> shapes = drawMeter.CreateArcList();
+            print(shapes.Count);
+            
+        }
 
         //Setting up Keys, to lock other keys when one simulation is being run
         keyLocks.Add(KeyCode.R, false);
