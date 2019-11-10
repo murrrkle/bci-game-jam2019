@@ -108,6 +108,8 @@ public class P300_Flashes : MonoBehaviour
     /* LSL Variables */
     private LSLMarkerStream marker;
 
+    private DrawMeter drawMeter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -116,6 +118,9 @@ public class P300_Flashes : MonoBehaviour
         refreshRate = resol[3].refreshRate;
         //Set up LSL Marker Stream
         marker = FindObjectOfType<LSLMarkerStream>();
+
+        List<Shapes2D.Shape> shapes = drawMeter.CreateArcList();
+        print(shapes.Count);
 
         //Setting up Keys, to lock other keys when one simulation is being run
         keyLocks.Add(KeyCode.R, false);

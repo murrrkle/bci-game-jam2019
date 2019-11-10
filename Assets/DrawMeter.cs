@@ -11,7 +11,7 @@ public class DrawMeter : MonoBehaviour
 
     private List<Shapes2D.Shape> arcs;
 
-    void Start()
+    public List<Shapes2D.Shape> CreateArcList()
     {
         arcs = new List<Shapes2D.Shape>();
         arcs.Add(largeArc);
@@ -29,14 +29,10 @@ public class DrawMeter : MonoBehaviour
             Shapes2D.Shape newSmall = Instantiate(smallArc);
             newSmall.transform.Rotate(0, 0, zRotation);
             arcs.Add(newSmall);
-
+        
             zRotation += 18;
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return arcs;
     }
 }
