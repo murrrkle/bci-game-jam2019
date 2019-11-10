@@ -18,6 +18,8 @@ public class Ball : MonoBehaviour
 
     private Vector3 oldPos;
 
+    private Color[] colorset = {Color.red, Color.green, Color.blue};
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +47,11 @@ public class Ball : MonoBehaviour
             rb.AddForce(rb.velocity.normalized * 5, ForceMode.VelocityChange);
         }
 
-        if (collision.gameObject.tag.Contains("Colour"))
+        if( collision.gameObject.tag.Contains("Random"))
+        {
+            SplatColour = colorset[(int)Random.Range(0,3)];
+        }
+         if (collision.gameObject.tag.Contains("Colour"))
         {
             SplatColour = collision.gameObject.GetComponent<Wall>().Colour;
         }
