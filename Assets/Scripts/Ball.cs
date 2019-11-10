@@ -10,17 +10,21 @@ public class Ball : MonoBehaviour
     public float SplatDistanceThreshold;
     public Splatter splatter;
 
-    public Color SplatColour;
+
+
+    public Splatter.SplatColour SplatColour;
 
     private Rigidbody rb;
     private SphereCollider sc;
-
+    private LevelController lc;
 
     private Vector3 oldPos;
 
     // Start is called before the first frame update
     void Start()
     {
+        SplatColour = Splatter.SplatColour.N;
+
         oldPos = transform.position;
         SpeedCoefficient = 1;
 
@@ -28,6 +32,8 @@ public class Ball : MonoBehaviour
         rb.AddForce(InitialVelocity * 2, ForceMode.VelocityChange);
 
         sc = this.gameObject.GetComponent<SphereCollider>();
+
+        lc = GameObject.Find("LevelController").GetComponent<LevelController>();
         
     }
 
@@ -45,7 +51,11 @@ public class Ball : MonoBehaviour
             rb.AddForce(rb.velocity.normalized * 5, ForceMode.VelocityChange);
         }
 
-        if (collision.gameObject.tag.Contains("Colour"))
+        if( collision.gameObject.tag.Contains("Random"))
+        {
+            SplatColour = (Splatter.SplatColour) Random.Range(0,5);
+        }
+         if (collision.gameObject.tag.Contains("Colour"))
         {
             SplatColour = collision.gameObject.GetComponent<Wall>().Colour;
         }
@@ -60,6 +70,10 @@ public class Ball : MonoBehaviour
         if (rb.velocity.magnitude <= DespawnThreshold) // Stop Ball if velocity is lower than Threshold.
         {
             rb.velocity = Vector3.zero;
+
+            // DESPAWN THE BALL, UPDATE LEVEL CONTROLLER
+
+            //lc.SendMessage();
         }
 
         else if (rb.velocity.magnitude >= 50)
@@ -69,13 +83,13 @@ public class Ball : MonoBehaviour
 
         Vector3 curPos = transform.position;
 
-        if (Vector3.Distance(oldPos, curPos) >= SplatDistanceThreshold && SplatColour.a != 0)
+        if (Vector3.Distance(oldPos, curPos) >= SplatDistanceThreshold && SplatColour >= 0)
         {
             Splatter splat = (Splatter)Instantiate(splatter, transform.position, Quaternion.identity);
             splat.transform.parent = GameObject.Find("SplatTrail").transform;
 
             //spawns the splatter
-            splat.GetComponent<Splatter>().splatColor = SplatColour;//set the splatter color
+            splat.GetComponent<Splatter>().splatColour = SplatColour;//set the splatter color
             splat.GetComponent<Splatter>().randomColor = false;//make random false as we want the splatter color to the color we assigned
             splat.GetComponent<Splatter>().ApplyStyle();//then apply the style
 
