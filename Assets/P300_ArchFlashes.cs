@@ -36,15 +36,8 @@ public class P300_ArchFlashes : MonoBehaviour
 
             if (startFlashes) {
                 marker.Write("P300 SingleFlash Begins");
-                SingleFlashes();
+                
             }
         }
-    }
-
-    IEnumerator SingleFlashes() {
-        System.Random random = new System.Random();
-        int randomIndex = random.Next(arcShapes.Count);
-
-
     }
 }
