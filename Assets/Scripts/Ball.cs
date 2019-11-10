@@ -36,7 +36,8 @@ public class Ball : MonoBehaviour
         string collisionTag = collision.gameObject.tag;
         if (collisionTag.Contains("Obstacle_Flat"))
         {
-            rb.AddForce(rb.velocity * SpeedCoefficient, ForceMode.VelocityChange);
+            //rb.AddForce(rb.velocity * SpeedCoefficient, ForceMode.VelocityChange);
+            rb.AddForce(rb.velocity* SpeedCoefficient, ForceMode.VelocityChange);
             SpeedCoefficient *= 0.9f; // Easing function - how will the coefficient decrease over time
         }
         else if (collisionTag.Contains("Bumper")) {
@@ -54,21 +55,23 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(rb.velocity.magnitude);
+        //Debug.Log(rb.velocity.magnitude);
 
         if (rb.velocity.magnitude <= DespawnThreshold) // Stop Ball if velocity is lower than Threshold.
         {
             rb.velocity = Vector3.zero;
         }
-    }
 
-    private void FixedUpdate()
-    {
+        else if (rb.velocity.magnitude >= 50)
+        {
+            rb.velocity = rb.velocity.normalized * 50;
+        }
+
         Vector3 curPos = transform.position;
 
-        if (Vector3.Distance(oldPos, curPos) >= SplatDistanceThreshold)
+        if (Vector3.Distance(oldPos, curPos) >= SplatDistanceThreshold && SplatColour.a != 0)
         {
-            Splatter splat  = (Splatter)Instantiate(splatter, transform.position, Quaternion.identity);
+            Splatter splat = (Splatter)Instantiate(splatter, transform.position, Quaternion.identity);
             splat.transform.parent = GameObject.Find("SplatTrail").transform;
 
             //spawns the splatter
@@ -78,6 +81,6 @@ public class Ball : MonoBehaviour
 
             oldPos = curPos;
         }
-        
     }
+    
 }
