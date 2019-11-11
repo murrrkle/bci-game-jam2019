@@ -24,18 +24,21 @@ public class DrawMeter : MonoBehaviour
             newLarge.transform.rotation = largeArc.transform.rotation;
             newLarge.transform.Rotate(0, 0, zRotation);
             newLarge.transform.position = largeArc.transform.position;
+            newLarge.transform.parent = largeArc.transform.parent;
             arcs.Add(newLarge);
 
             Shapes2D.Shape newMed = Instantiate(mediumArc);
             newMed.transform.rotation = largeArc.transform.rotation;
             newMed.transform.Rotate(0, 0, zRotation);
             newMed.transform.position = largeArc.transform.position;
+            newMed.transform.parent = largeArc.transform.parent;
             arcs.Add(newMed);
 
             Shapes2D.Shape newSmall = Instantiate(smallArc);
             newSmall.transform.rotation = largeArc.transform.rotation;
             newSmall.transform.Rotate(0, 0, zRotation);
             newSmall.transform.position = largeArc.transform.position;
+            newSmall.transform.parent = largeArc.transform.parent;
             arcs.Add(newSmall);
         
             zRotation += 18;

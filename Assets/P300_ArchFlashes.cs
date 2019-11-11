@@ -31,32 +31,27 @@ public class P300_ArchFlashes : MonoBehaviour
 
     void Start()
     {
-        drawMeter = GameObject.FindGameObjectWithTag("Launcher").GetComponent<DrawMeter>();
-        arcShapes = drawMeter.CreateArcList();
-        SetUpSingle();
-
-        print(largeColor.ToString());
+        // drawMeter = GameObject.FindGameObjectWithTag("Launcher").GetComponent<DrawMeter>();
 
         marker = FindObjectOfType<LSLMarkerStream>();
 
         resolution = Screen.resolutions;
-        print(Screen.resolutions[1]);
         refreshRate = resolution[3].refreshRate;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R)) {
-            startFlashes = !startFlashes;
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.R)) {
+    //         startFlashes = !startFlashes;
 
-            if (startFlashes) {
-                ResetCounters();
-                SetUpSingle();
-                marker.Write("P300 SingleFlash Begins");
-                StartCoroutine("SingleFlash");
-            }
-        }
-    }
+    //         if (startFlashes) {
+    //             ResetCounters();
+    //             SetUpSingle();
+    //             marker.Write("P300 SingleFlash Begins");
+    //             StartCoroutine("SingleFlash");
+    //         }
+    //     }
+    // }
 
     public void SetUpSingle() {
         //Setting counters for each shape
@@ -80,7 +75,10 @@ public class P300_ArchFlashes : MonoBehaviour
 
 
     /* Single Flash Operation */
-    IEnumerator SingleFlash() {
+    public IEnumerator SingleFlash(List<Shapes2D.Shape> shapes) {
+        arcShapes = shapes;
+        SetUpSingle();
+
         while(startFlashes){
             //Generate a random number from the list of indices that have non-zero counters
             System.Random random = new System.Random();
