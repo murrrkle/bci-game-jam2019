@@ -24,9 +24,9 @@ public class Ball : MonoBehaviour
         SplatColour = Splatter.SplatColour.N;
 
         oldPos = transform.position;
-        SpeedCoefficient = 2;
 
         rb = this.gameObject.GetComponent<Rigidbody>();
+        rb.AddForce(InitialVelocity * SpeedCoefficient, ForceMode.VelocityChange);
         sc = this.gameObject.GetComponent<SphereCollider>();
 
         lc = GameObject.Find("LevelController").GetComponent<LevelController>();

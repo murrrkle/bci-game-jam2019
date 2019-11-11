@@ -20,9 +20,14 @@ public class LevelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+      string s = "";  
         //GetRelativeColourPercentage();
+        foreach(int i in SplatCounts)
+        {
+            s += i.ToString() +" ";
 
+        }
+Debug.Log(s);
     }
 
     public void AddCount(Splatter.SplatColour c)
@@ -43,17 +48,19 @@ public class LevelController : MonoBehaviour
 
         foreach (int i in SplatCounts)
             sum += (double)i;
+        if (sum > 0) {
 
-        for (int i = 0; i < SplatCounts.Length; i++)
-        {
-            p[i] = (double) ((int) ((SplatCounts[i] / sum) * 1000))/10;
+            for (int i = 0; i < SplatCounts.Length; i++)
+            {
+                p[i] = (double) ((int) ((SplatCounts[i] / sum) * 1000))/10;
+            }
         }
-        /*
+        
         string debug = "";
         foreach (double i in p)
             debug += i.ToString() + " ";
 
-        Debug.Log(debug);*/
+        Debug.Log(debug);
         return p;
     }
 }

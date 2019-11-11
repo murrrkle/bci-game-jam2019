@@ -14,6 +14,11 @@ TagManager:
   - Bumper_Colour
   - Launcher
   - Bumper_Random
+  - Red
+  - Green
+  - Blue
+  - Yellow
+  - Magenta
   layers:
   - Default
   - TransparentFX
