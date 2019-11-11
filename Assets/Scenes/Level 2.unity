@@ -1385,6 +1385,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8217549671990563743, guid: 9cabf5b9e7b8e4bd0b02452addb064d8,
+        type: 3}
+      propertyPath: ActiveColours.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217549671990563743, guid: 9cabf5b9e7b8e4bd0b02452addb064d8,
+        type: 3}
+      propertyPath: ActiveColours.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217549671990563743, guid: 9cabf5b9e7b8e4bd0b02452addb064d8,
+        type: 3}
+      propertyPath: ActiveColours.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217549671990563743, guid: 9cabf5b9e7b8e4bd0b02452addb064d8,
+        type: 3}
+      propertyPath: ActiveColours.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217549671990563743, guid: 9cabf5b9e7b8e4bd0b02452addb064d8,
+        type: 3}
+      propertyPath: ActiveColours.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217549671990563743, guid: 9cabf5b9e7b8e4bd0b02452addb064d8,
+        type: 3}
+      propertyPath: BallCount
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cabf5b9e7b8e4bd0b02452addb064d8, type: 3}
 --- !u!1 &1039202262

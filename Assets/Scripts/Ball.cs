@@ -62,14 +62,15 @@ public class Ball : MonoBehaviour
     void Update()
     {
         //Debug.Log(rb.velocity.magnitude);
-
+        Debug.Log(rb.velocity.magnitude);
         if (rb.velocity.magnitude <= DespawnThreshold) // Stop Ball if velocity is lower than Threshold.
         {
             rb.velocity = Vector3.zero;
 
             // DESPAWN THE BALL, UPDATE LEVEL CONTROLLER
 
-            //lc.SendMessage();
+            lc.DecreaseBalls();
+
         }
 
         else if (rb.velocity.magnitude >= 50)
