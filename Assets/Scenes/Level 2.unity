@@ -1283,7 +1283,7 @@ PrefabInstance:
     - target: {fileID: 4255497755702592580, guid: 515920aff6dbd39448a56305a05e4d40,
         type: 3}
       propertyPath: InitialVelocity.z
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4255497755702592580, guid: 515920aff6dbd39448a56305a05e4d40,
         type: 3}
