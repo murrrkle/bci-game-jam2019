@@ -21,14 +21,19 @@ public class DrawMeter : MonoBehaviour
         int zRotation = 18;
         for (int i = 1; i < segments; i++) {
             Shapes2D.Shape newLarge = Instantiate(largeArc);
+            newLarge.transform.rotation = largeArc.transform.rotation;
             newLarge.transform.Rotate(0, 0, zRotation);
             newLarge.transform.position = largeArc.transform.position;
             arcs.Add(newLarge);
+
             Shapes2D.Shape newMed = Instantiate(mediumArc);
+            newMed.transform.rotation = largeArc.transform.rotation;
             newMed.transform.Rotate(0, 0, zRotation);
             newMed.transform.position = largeArc.transform.position;
             arcs.Add(newMed);
+
             Shapes2D.Shape newSmall = Instantiate(smallArc);
+            newSmall.transform.rotation = largeArc.transform.rotation;
             newSmall.transform.Rotate(0, 0, zRotation);
             newSmall.transform.position = largeArc.transform.position;
             arcs.Add(newSmall);
