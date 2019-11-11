@@ -17,7 +17,7 @@ public class P300_ArchFlashes : MonoBehaviour
     private LSLMarkerStream marker;
     private Resolution[] resolution;
     private int refreshRate;
-    private bool startFlashes;
+    public bool startFlashes = false;
     private List<int> flash_counter = new List<int>();
     private int counter = 0;
     private int numTrials;

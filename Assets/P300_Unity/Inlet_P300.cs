@@ -19,7 +19,7 @@ public class Inlet_P300 : AStringInlet
     private double sim_start_time;
     private double sim_end_time;
     private int numRows;
-    private int cubeIndex;
+    public int cubeIndex = -1;
     private int[] cubeIndices;
     protected override void Process(string[] newSample, double timeStamp)
     {

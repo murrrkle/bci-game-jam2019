@@ -17,7 +17,9 @@ public class LevelController : MonoBehaviour
     private int largePower = 8;
     private int mediumPower = 5;
     private int smallPower = 3;
-
+    private GameObject markerStream;
+    private Inlet_P300 inlet;
+    private Vector3 launchVector;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,9 @@ public class LevelController : MonoBehaviour
         arcList = drawMeter.CreateArcList();
         flasher = launcher.GetComponent<P300_ArchFlashes>();
         launcher.SetActive(false);
+
+        markerStream = GameObject.FindGameObjectsWithTag("MarkerStream")[0];
+        inlet = markerStream.GetComponent<Inlet_P300>();
     }
 
 
@@ -53,11 +58,18 @@ public class LevelController : MonoBehaviour
                     Shapes2D.Shape shape = hitInfo.transform.gameObject.GetComponent<Shapes2D.Shape>();
                     int shapeIndex = arcList.IndexOf(shape);
                     if (shapeIndex >= 0) {
-                        Vector3 launchVector = CalculateLaunchVector(shapeIndex);
+                        launchVector = CalculateLaunchVector(shapeIndex);
                         isFlashing = !isFlashing;
+                        //Call function to launch ball here
                     }
                 }
                 
+            }
+
+            if (!flasher.startFlashes && inlet.cubeIndex >= 0) {
+                launchVector = CalculateLaunchVector(inlet.cubeIndex);
+                isFlashing = !isFlashing;
+                //Call function to launch ball here
             }
         }
     }
