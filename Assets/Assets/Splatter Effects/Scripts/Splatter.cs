@@ -56,19 +56,19 @@ public class Splatter : MonoBehaviour
             switch (splatColour)
             {
                 case SplatColour.R:
-                    spriteRenderer.color = Color.red;
+                    spriteRenderer.color = new Color(1, 0, 0, 0.5f);
                     break;
                 case SplatColour.G:
-                    spriteRenderer.color = Color.green;
+                    spriteRenderer.color = new Color(0, 1, 0, 0.5f);
                     break;
                 case SplatColour.B:
-                    spriteRenderer.color = Color.blue;
+                    spriteRenderer.color = new Color(0, 0, 1, 0.5f);
                     break;
                 case SplatColour.M:
-                    spriteRenderer.color = Color.magenta;
+                    spriteRenderer.color = new Color(1, 0, 1, 0.5f);
                     break;
                 case SplatColour.Y:
-                    spriteRenderer.color = Color.yellow;
+                    spriteRenderer.color = new Color(1, 1, 0, 0.5f); ;
                     break;
 
 
@@ -78,6 +78,8 @@ public class Splatter : MonoBehaviour
             }
         }
         transform.rotation = Quaternion.Euler(90, 0, Random.Range(0, 360));
+
+        
     }
     private void OnBecameVisible()
     {
