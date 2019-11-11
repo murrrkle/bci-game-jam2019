@@ -5,19 +5,24 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     private int[] SplatCounts;
+    public Ball ballprefab;
+    //public Launcher launcher;
 
 
     // Start is called before the first frame update
     void Start()
     {
         SplatCounts = new int[5] { 0, 0, 0, 0, 0 }; // R, G, B, M, Y
+        // instantiate launcher here
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        GetRelativeColourPercentage();
+        
+        //GetRelativeColourPercentage();
+
     }
 
     public void AddCount(Splatter.SplatColour c)
@@ -27,7 +32,7 @@ public class LevelController : MonoBehaviour
 
     public void MinusCount(Splatter.SplatColour c)
     {
-        SplatCounts[(int)c] -= 1;
+        //SplatCounts[(int)c] -= 1;
     }
 
     public double[] GetRelativeColourPercentage()
