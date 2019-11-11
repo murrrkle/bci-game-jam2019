@@ -19,6 +19,7 @@ TagManager:
   - Blue
   - Yellow
   - Magenta
+  - MarkerStream
   layers:
   - Default
   - TransparentFX

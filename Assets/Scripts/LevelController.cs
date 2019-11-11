@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
@@ -50,16 +51,17 @@ public class LevelController : MonoBehaviour
 
         if (isFlashing) {
             if (Input.GetMouseButtonDown(0)) {
-                print("Mouse click");
                 RaycastHit hitInfo;
                 bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
             
                 if (hit) {
                     Shapes2D.Shape shape = hitInfo.transform.gameObject.GetComponent<Shapes2D.Shape>();
                     int shapeIndex = arcList.IndexOf(shape);
+                    print(shapeIndex);
                     if (shapeIndex >= 0) {
                         launchVector = CalculateLaunchVector(shapeIndex);
                         isFlashing = !isFlashing;
+                        GameObject.Find("Index").GetComponent<Text>().text = "Index: " + shapeIndex;
                         //Call function to launch ball here
                     }
                 }
@@ -69,6 +71,7 @@ public class LevelController : MonoBehaviour
             if (!flasher.startFlashes && inlet.cubeIndex >= 0) {
                 launchVector = CalculateLaunchVector(inlet.cubeIndex);
                 isFlashing = !isFlashing;
+                GameObject.Find("Index").GetComponent<Text>().text = "Index: " + inlet.cubeIndex;
                 //Call function to launch ball here
             }
         }
