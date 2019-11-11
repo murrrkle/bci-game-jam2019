@@ -37,7 +37,7 @@ public class P300_ArchFlashes : MonoBehaviour
 
         print(largeColor.ToString());
 
-        // marker = FindObjectOfType<LSLMarkerStream>();
+        marker = FindObjectOfType<LSLMarkerStream>();
 
         resolution = Screen.resolutions;
         print(Screen.resolutions[1]);
@@ -50,7 +50,9 @@ public class P300_ArchFlashes : MonoBehaviour
             startFlashes = !startFlashes;
 
             if (startFlashes) {
-                // marker.Write("P300 SingleFlash Begins");
+                ResetCounters();
+                SetUpSingle();
+                marker.Write("P300 SingleFlash Begins");
                 StartCoroutine("SingleFlash");
             }
         }
@@ -93,14 +95,14 @@ public class P300_ArchFlashes : MonoBehaviour
                 yield return new WaitForSecondsRealtime((1f/freqHz));
 
                 Shapes2D.Shape randomShape = arcShapes[randomIndex];
-                randomShape.settings.fillColor = new Color(255, 255, 255);                
+                randomShape.settings.fillColor = onColor;                
                 flash_counter[randomShapeIndex]--;
                 counter++;
-                print("CUBE: " + randomShape.ToString());
-                print(counter);
+                //print("CUBE: " + randomShape.ToString());
+                //print(counter);
 
                 //Write to the LSL Outlet stream
-               //marker.Write("s," + randomShape.ToString());
+               marker.Write("s," + randomShape.ToString());
             } else if(numTrials == counter){
                 print("Done P300 Single Flash Trials");
                 break;
@@ -117,9 +119,9 @@ public class P300_ArchFlashes : MonoBehaviour
             yield return new WaitForSecondsRealtime(flashLength);
 
         }
-        //ResetCounters();
+        ResetCounters();
         //Write to LSL stream to indicate end of P300 SingleFlash
-       //marker.Write("P300 SingleFlash Ends");
+        marker.Write("P300 SingleFlash Ends");
         startFlashes = !startFlashes;
         //keyLocks[KeyCode.S] = !keyLocks[KeyCode.S];
     }
@@ -137,5 +139,11 @@ public class P300_ArchFlashes : MonoBehaviour
                 shape.settings.fillColor = smallColor;
             }
         }
+    }
+
+    public void ResetCounters(){
+        counter = 0;
+        flash_counter.Clear();
+        s_indexes.Clear();
     }
 }
