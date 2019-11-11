@@ -107,11 +107,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialVelocity: {x: 0, y: 0, z: 0}
-  SpeedCoefficient: 1
+  SpeedCoefficient: 2
   DespawnThreshold: 1.8
   SplatDistanceThreshold: 0.5
   splatter: {fileID: 11466376, guid: 273acd9f54f187a48a419d6b81376337, type: 3}
-  SplatColour: {r: 0, g: 0, b: 0, a: 0}
+  SplatColour: 0
 --- !u!54 &4255497755702592583
 Rigidbody:
   m_ObjectHideFlags: 0

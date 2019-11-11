@@ -15,9 +15,7 @@ public class Inlet_P300 : AStringInlet
     private string input = "";
     private double timestamp;
     private float freqHz;
-    private List<GameObject> cube_list;
-    private Color onColour;
-    private Color offColour;
+    private List<Shapes2D.Shape> cube_list;
     private double sim_start_time;
     private double sim_end_time;
     private int numRows;
@@ -30,14 +28,10 @@ public class Inlet_P300 : AStringInlet
         timestamp = timeStamp;
 
         //Obtain necessary information from the P300_Flashes.cs file. 
-        GameObject cubeController = GameObject.Find("CubeController");
-        P300_Flashes p300Flashes = cubeController.GetComponent<P300_Flashes>();
-        cube_list = p300Flashes.cube_list;
+        GameObject cubeController = GameObject.Find("Launcher");
+        P300_ArchFlashes p300Flashes = cubeController.GetComponent<P300_ArchFlashes>();
+        cube_list = p300Flashes.arcShapes;
         freqHz = p300Flashes.freqHz;
-        onColour = p300Flashes.onColour;
-        offColour = p300Flashes.offColour;
-        numRows = p300Flashes.numRows;
-        cubeIndices = new int[numRows];
 
         //Call CoRoutine to do further processing
         StartCoroutine("SelectedCube");
@@ -58,7 +52,7 @@ public class Inlet_P300 : AStringInlet
                 //print("Single Flash Value");
                 cubeIndex = Int32.Parse(input_split[1]);
                 print("\tCube Value: " + cubeIndex.ToString());
-                cube_list[cubeIndex].GetComponent<Renderer>().material.color = Color.green;
+                //cube_list[cubeIndex].GetComponent<Renderer>().material.color = Color.green;
             } else if(classifier == "r"){
                 //print("Row Flash Value");
                  
@@ -82,14 +76,7 @@ public class Inlet_P300 : AStringInlet
             }    
         }
         yield return new WaitForSecondsRealtime(2);
-        TurnOff();
 
 
-    }
-
-    public void TurnOff(){
-        for(int i = 0; i < cube_list.Count; i++){
-            cube_list[i].GetComponent<Renderer>().material.color = offColour;
-        }
     }
 }

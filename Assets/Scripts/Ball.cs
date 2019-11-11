@@ -10,8 +10,6 @@ public class Ball : MonoBehaviour
     public float SplatDistanceThreshold;
     public Splatter splatter;
 
-
-
     public Splatter.SplatColour SplatColour;
 
     private Rigidbody rb;
@@ -26,11 +24,9 @@ public class Ball : MonoBehaviour
         SplatColour = Splatter.SplatColour.N;
 
         oldPos = transform.position;
-        SpeedCoefficient = 1;
+        SpeedCoefficient = 2;
 
         rb = this.gameObject.GetComponent<Rigidbody>();
-        rb.AddForce(InitialVelocity * 2, ForceMode.VelocityChange);
-
         sc = this.gameObject.GetComponent<SphereCollider>();
 
         lc = GameObject.Find("LevelController").GetComponent<LevelController>();
@@ -95,6 +91,11 @@ public class Ball : MonoBehaviour
 
             oldPos = curPos;
         }
+    }
+
+    public void LaunchBall()
+    {
+        rb.AddForce(InitialVelocity * SpeedCoefficient, ForceMode.VelocityChange);
     }
     
 }

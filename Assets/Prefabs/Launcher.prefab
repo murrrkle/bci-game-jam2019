@@ -42,10 +42,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1668729784565043520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b54ea0bceedcb1f5bf8429a9a90ba21, type: 3}
+  m_Script: {fileID: 11500000, guid: acbdb6a60687b234cb6266bdadc19564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  segments: 5
+  segments: 0
   largeArc: {fileID: 0}
   mediumArc: {fileID: 0}
   smallArc: {fileID: 0}
@@ -58,17 +58,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1668729784565043520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b80eb154500329641b69279a6ee24935, type: 3}
+  m_Script: {fileID: 11500000, guid: c254b7f93a75c2f4a89d2c9c4b8a7453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashLength: 0.1
-  freqHz: 60
-  samples: 3
-  onColor: {r: 1, g: 1, b: 1, a: 1}
+  flashLength: 0
+  freqHz: 0
+  samples: 0
+  onColor: {r: 0, g: 0, b: 0, a: 0}
   offColor: {r: 0, g: 0, b: 0, a: 0}
-  largeColor: {r: 0.9450981, g: 0.7686275, b: 0.058823533, a: 1}
-  mediumColor: {r: 0.15294118, g: 0.68235296, b: 0.37647063, a: 1}
-  smallColor: {r: 0.90196085, g: 0.49411768, b: 0.13333334, a: 1}
+  largeColor: {r: 0, g: 0, b: 0, a: 0}
+  mediumColor: {r: 0, g: 0, b: 0, a: 0}
+  smallColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &8863042072940274617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -141,12 +141,12 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1817477419068799064, guid: be2728df906f82e4992bc20f714e9f20,
+    - target: {fileID: 1817477419227377784, guid: be2728df906f82e4992bc20f714e9f20,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1817477419227377784, guid: be2728df906f82e4992bc20f714e9f20,
+    - target: {fileID: 1817477419068799064, guid: be2728df906f82e4992bc20f714e9f20,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
