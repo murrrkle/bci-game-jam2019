@@ -23,9 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 65aac4058825df344819f1d364c7b623
-  - enabled: 1
-    path: Assets/Scenes/Colour Percentage Bars.unity
-    guid: 3730fa472feeeee469d09fd0b3fa7da3
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/SplatTest.unity
     guid: a5b78aa2e3ddcf64787e8c7cf0fdaa4e

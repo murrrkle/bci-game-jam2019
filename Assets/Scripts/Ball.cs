@@ -26,7 +26,7 @@ public class Ball : MonoBehaviour
         oldPos = transform.position;
 
         rb = this.gameObject.GetComponent<Rigidbody>();
-        rb.AddForce(InitialVelocity * SpeedCoefficient, ForceMode.VelocityChange);
+        //rb.AddForce(InitialVelocity * SpeedCoefficient, ForceMode.VelocityChange);
         sc = this.gameObject.GetComponent<SphereCollider>();
 
         lc = GameObject.Find("LevelController").GetComponent<LevelController>();

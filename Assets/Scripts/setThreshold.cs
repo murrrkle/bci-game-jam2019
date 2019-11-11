@@ -13,7 +13,7 @@ public class setThreshold : MonoBehaviour
 
     private float barheight;
     void Start()
-    {
+    { 
         barheight = 50;
         thresholdHeight = 10;
         thresholdAdjusted = threshold*barheight + thresholdHeight;

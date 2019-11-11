@@ -1,18 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
     private int[] SplatCounts;
     public Ball ballprefab;
+    public bool[] ActiveColours;
+    public GameObject complete;
+    public GameObject gameover;
+
+    public int BallCount;
+
+
     //public Launcher launcher;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        SplatCounts = new int[5] { 0, 0, 0, 0, 0 }; // R, G, B, M, Y
+        SplatCounts = new int[5]{ 0, 0, 0, 0, 0 }; // R, G, B, M, Y
         // instantiate launcher here
     }
 
@@ -20,14 +29,63 @@ public class LevelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      string s = "";  
-        //GetRelativeColourPercentage();
-        foreach(int i in SplatCounts)
+        // After running out of balls
+        if (BallCount <= 0)
         {
-            s += i.ToString() +" ";
-
+            StartCoroutine(CheckWin());
         }
-Debug.Log(s);
+
+        // Flashes
+
+
+        //GetRelativeColourPercentage();
+        
+    }
+
+    IEnumerator CheckWin()
+    {
+        if (CheckWinState())
+        {
+            // Do Level Complete
+            complete.SetActive(true);
+            yield return new WaitForSeconds(5);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        { // Do Game Over
+            gameover.SetActive(true);
+            yield return new WaitForSeconds(5);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        Debug.Log("SWITCH TO NEW LEVEL");
+    }
+
+    private bool CheckWinState()
+    {
+        GameObject RedBar = GameObject.Find("Red Bar");
+        GameObject GreenBar = GameObject.Find("Green Bar");
+        GameObject BlueBar = GameObject.Find("Blue Bar");
+        GameObject MagentaBar = GameObject.Find("Magenta Bar");
+        GameObject YellowBar = GameObject.Find("Yellow Bar");
+
+        GameObject[] colours = {RedBar, GreenBar, BlueBar, MagentaBar, YellowBar };
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (ActiveColours[i])
+            {   
+                if (colours[i].transform.GetChild(0).gameObject.GetComponent<Image>().fillAmount >
+                    colours[i].transform.GetChild(1).gameObject.GetComponent<setThreshold>().threshold + 0.1f ||
+                    colours[i].transform.GetChild(0).gameObject.GetComponent<Image>().fillAmount <
+                    colours[i].transform.GetChild(1).gameObject.GetComponent<setThreshold>().threshold - 0.1f)
+                {
+                    return false;
+                }
+           }
+        }
+        return true;
+
     }
 
     public void AddCount(Splatter.SplatColour c)

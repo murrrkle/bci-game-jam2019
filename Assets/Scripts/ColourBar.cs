@@ -27,7 +27,7 @@ public class ColourBar : MonoBehaviour
     void Update()
     {
         // Update value of currentColorArea
-        colourArray = level_controller.GetRelativeColourPercentage();
+        colourArray = level_controller.GetRelativeColourPercentage(); 
 
         redCount = colourArray[0];
         greenCount = colourArray[1];
